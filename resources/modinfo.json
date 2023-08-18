@@ -1,0 +1,15 @@
+{
+  "type": "code",
+  "name": "NoCharcoalLost",
+  "modid": "nocharcoallost",
+  "version": "1.0.0",
+  "description": "Charcoal pits turn all firewood into charcoal",
+  "website": "https://github.com/BillyGalbreath/VS-NoCharcoalLost",
+  "authors": [ "BillyGalbreath" ],
+  "side": "Universal",
+  "requiredOnClient": false,
+  "requiredOnServer": true,
+  "dependency": {
+    "game": "1.18.0"
+  }
+}
