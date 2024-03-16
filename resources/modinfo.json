@@ -9,7 +9,7 @@
   "side": "Universal",
   "requiredOnClient": false,
   "requiredOnServer": true,
-  "dependency": {
-    "game": "1.18.0"
+  "dependencies": {
+    "game": "1.18.8"
   }
 }
