@@ -26,10 +26,19 @@ public class NoCharcoalLostMod : ModSystem {
         _harmony?.UnpatchAll(Mod.Info.ModID);
     }
 
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(BlockEntityCharcoalPit), "ConvertPit")]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    private static void Postfix(BlockEntityCharcoalPit __instance) {
+        if (__instance.Api.World.BlockAccessor.GetBlock(__instance.Pos).Code.PathStartsWith("charcoalpile")) {
+            __instance.Api.World.BlockAccessor.SetBlock(0, __instance.Pos);
+        }
+    }
+
     [HarmonyTranspiler]
     [HarmonyPatch(typeof(BlockEntityCharcoalPit), "ConvertPit")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public static IEnumerable<CodeInstruction> ConvertPit(IEnumerable<CodeInstruction> instructions) {
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
         List<CodeInstruction> codes = new(instructions);
 
         for (int i = 0; i < codes.Count; i++) {
